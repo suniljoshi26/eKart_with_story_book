@@ -7,10 +7,10 @@ import Product from "./Component/Product/Product";
 
 function App() {
   const [count, setCount] = useState(0);
-  const a = getProductdata();
-  a.then((product: string) => {
-    console.log("vjhf", product.data);
-  });
+  // const a = getProductdata();
+  // a.then((product: string) => {
+  //   console.log("vjhf", product.data);
+  // });
 
   return (
     <div className="">
