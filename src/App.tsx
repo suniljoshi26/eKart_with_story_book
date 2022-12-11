@@ -1,23 +1,22 @@
 import { useState } from "react";
-import { getProductdata } from "./api";
+// import { getProductdata } from "./api";
 import Button from "./Button";
 import Footer from "./Component/Footer/Footer";
 import NavBar from "./Component/NavBar/NavBar";
 import Product from "./Component/Product/Product";
+import ProductListPage from "./Component/ProductListPage/ProductListPage";
 
 function App() {
   const [count, setCount] = useState(0);
-  // const a = getProductdata();
-  // a.then((product: string) => {
-  //   console.log("vjhf", product.data);
-  // });
 
   return (
     <div className="">
       <NavBar />
-      <Product />
+      <div>
+        <ProductListPage />
+      </div>
       <Footer />
-      <Button>Save</Button>
+      {/* <Button>Save</Button> */}
     </div>
   );
 }
