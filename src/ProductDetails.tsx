@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
@@ -6,6 +6,7 @@ import { getProductId } from "./api";
 import Loading from "./Loading";
 import NotFound from "./NotFound";
 import { ProductProps } from "./module/Madule";
+
 //import { WithCart } from "./Hoc/WithProvider";
 function ProductDetail({}) {
   const id = useParams().id;
@@ -28,7 +29,7 @@ function ProductDetail({}) {
     [id]
   );
 
-  function HandleCountChange(event) {
+  function HandleCountChange(event: ChangeEvent<HTMLInputElement>) {
     setCount(+event.target.value);
   }
   //   function handleButtonClick() {
