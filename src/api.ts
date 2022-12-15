@@ -48,7 +48,7 @@ export function getProductList({
     });
 }
 
-export function getProductId(id: number) {
+export function getProductId(id: number | undefined) {
   return axios
     .get("https://myeasykart.codeyogi.io/product/" + id)
     .then(function (response) {

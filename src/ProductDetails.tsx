@@ -9,11 +9,11 @@ import { ProductProps } from "./module/Madule";
 
 //import { WithCart } from "./Hoc/WithProvider";
 function ProductDetail({}) {
-  const id = useParams().id;
   const [product, setProduct] = useState<ProductProps>();
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
-
+  const params = useParams();
+  const id: number = Number(params.id);
   useEffect(
     function () {
       const p = getProductId(id);
