@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { WithCart } from "../Hoc/WithProvider.js";
-import Button from "../Login/Button.jsx";
-import Input from "../Login/Input.jsx";
-import CartRow from "./CartRow.jsx";
+import { FC } from "react";
+import CartRow from "./CartRow.js";
+import Input from "../Input.js";
+import Button from "../Button.js";
+type cartArray = {
+  cart: any[];
+  updateCart: Function;
+};
 
-const CartListPage = ({ cart, updateCart }) => {
+const CartListPage: FC<cartArray> = ({ cart, updateCart }) => {
   const [quantityMap, setQuantityMap] = useState({});
   const cartToQuantityMap = () =>
     cart.reduce(
@@ -15,7 +20,7 @@ const CartListPage = ({ cart, updateCart }) => {
     setQuantityMap(cartToQuantityMap);
   }, [cart]);
 
-  const handleQuantityChange = (productId, newValue) => {
+  const handleQuantityChange = (productId: number, newValue: number) => {
     console.log("handleChange", newValue, productId);
 
     const newLocalCart = { ...quantityMap, [productId]: newValue };
@@ -30,7 +35,7 @@ const CartListPage = ({ cart, updateCart }) => {
 
     updateCart(quantityMap);
   };
-  const handleRemove = (productId) => {
+  const handleRemove = (productId: number) => {
     console.log("product to be removed", productId);
     const newQuantityMap = cartToQuantityMap();
     console.log("before cart", cart);
@@ -57,7 +62,7 @@ const CartListPage = ({ cart, updateCart }) => {
           <CartRow
             key={cartItem.product.id}
             product={cartItem.product}
-            quantity={quantityMap[cartItem.product.id]}
+            quantity={quantityMap[cartItem.product.id] || cartItem.quantity}
             onQuantityChange={handleQuantityChange}
             onRemove={handleRemove}
           />
@@ -67,7 +72,7 @@ const CartListPage = ({ cart, updateCart }) => {
         <div className="space-x-1">
           {" "}
           <div className=" flex space-x-2">
-            <Input />
+            <input />
             <Button>APPLY COUPON</Button>
           </div>
         </div>
