@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { TiWarning } from "react-icons/ti";
 import { BiErrorAlt } from "react-icons/bi";
 import { BsPatchCheck } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
-import { WithAlert } from "./Hoc/WithProvider";
+import WithAlert from "./hoc/WithAlert";
 
 const themMap = {
   success: {
@@ -19,8 +19,12 @@ const themMap = {
     Icon: TiWarning,
   },
 };
+type AlertProps = {
+  alert: { massage: string; type: string };
+  removeAlert: any;
+};
 
-const Alert = ({ alert, removeAlert }) => {
+const Alert: FC<AlertProps> = ({ alert, removeAlert }) => {
   //alert timer and remove
   useEffect(() => {
     if (alert) {

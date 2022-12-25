@@ -1,6 +1,5 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
-import Button from "../Login/Button";
 
 function CartRow({ product, quantity, onQuantityChange, onRemove }) {
   console.log("product title ", product.title);

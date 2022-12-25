@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import { AlertContext, CartContext, userContext } from "../context/context";
-const WithProvider = (provider) => {
-  const myHoc = (IncomingComponent) => {
-    const outgoingComponent = (props) => {
-      const contexData = useContext(provider);
+const WithProvider = (provider: any) => {
+  const myHoc = (IncomingComponent: any) => {
+    const outgoingComponent = (props: any) => {
+      const contexData: any = useContext(provider);
       return <IncomingComponent {...props} {...contexData} />;
     };
 

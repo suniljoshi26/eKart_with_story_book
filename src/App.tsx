@@ -1,28 +1,71 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-// import { getProductdata } from "./api";
-import Button from "./Button";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Alert from "./Alert";
+import AuthRoute from "./AuthRoute";
+import CartPage from "./Cart/CartPage";
 import Footer from "./Component/Footer/Footer";
 import NavBar from "./Component/NavBar/NavBar";
-import Product from "./Component/Product/Product";
 import ProductListPage from "./Component/ProductListPage/ProductListPage";
+import NotFound from "./NotFound";
 import ProductDetail from "./ProductDetails";
+import { AlertProvider } from "./provider/AlertProvider";
+import CartProvider from "./provider/CartProvider";
+import UserProvider from "./provider/UserProvider";
+import SignUp from "./SignUp";
+import UserRoute from "./UserRoute";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className=" h-screen">
-      <NavBar />
-      <div className="grow">
-        <Routes>
-          <Route index element={<ProductListPage />}></Route>
+    <div className="  bg-gray-100 h-screen overflow-scroll flex flex-col">
+      {" "}
+      <UserProvider>
+        <CartProvider>
+          <AlertProvider>
+            <Alert />
+            <NavBar />
+            <div className="grow">
+              <Routes>
+                <Route
+                  index
+                  element={
+                    <UserRoute>
+                      <ProductListPage />
+                    </UserRoute>
+                  }
+                ></Route>
 
-          <Route path="/products/:id/" element={<ProductDetail />}></Route>
-        </Routes>
-      </div>
-      <Footer />
-      {/* <Button>Save</Button> */}
+                <Route
+                  path="/products/:id/"
+                  element={<ProductDetail />}
+                ></Route>
+
+                <Route path="*" element={<NotFound />}></Route>
+
+                <Route
+                  path="/login/"
+                  element={
+                    <AuthRoute>
+                      {/* <LoginPage /> */}
+                    </AuthRoute>
+                  }
+                ></Route>
+
+                <Route
+                  path="/signup"
+                  element={
+                    <AuthRoute>
+                      <SignUp />
+                    </AuthRoute>
+                  }
+                ></Route>
+                {/* <Route path="/forgetpass/" element={<ForgetPass />}></Route>
+                <Route path="/cart" element={<CartPage />}></Route> */}
+              </Routes>
+            </div>
+            <Footer />
+          </AlertProvider>
+        </CartProvider>
+      </UserProvider>
     </div>
   );
 }

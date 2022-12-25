@@ -1,11 +1,12 @@
-import { withFormik } from "formik";
 import React from "react";
+import { withFormik } from "formik";
+
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import * as Yup from "yup";
 import Input from "./Input";
 import axios from "axios";
-import { WithAlert, WithUser } from "../Hoc/WithProvider";
+import { WithAlert, WithUser } from "./Hoc/WithProvider";
 
 const SignUpApi = (values, bag) => {
   axios
