@@ -11,7 +11,7 @@ import ProductDetail from "./ProductDetails";
 import { AlertProvider } from "./provider/AlertProvider";
 import CartProvider from "./provider/CartProvider";
 import UserProvider from "./provider/UserProvider";
-import SignUp from "./SignUp";
+import SignUp from "./Login/SignUp";
 import UserRoute from "./UserRoute";
 
 function App() {
@@ -43,11 +43,7 @@ function App() {
 
                 <Route
                   path="/login/"
-                  element={
-                    <AuthRoute>
-                      {/* <LoginPage /> */}
-                    </AuthRoute>
-                  }
+                  element={<AuthRoute>{/* <LoginPage /> */}</AuthRoute>}
                 ></Route>
 
                 <Route

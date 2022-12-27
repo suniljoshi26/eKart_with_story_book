@@ -2,11 +2,11 @@ import React from "react";
 import { withFormik } from "formik";
 
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../Button";
 import * as Yup from "yup";
-import Input from "./Input";
+import Input from "../Input";
 import axios from "axios";
-import { WithAlert, WithUser } from "./Hoc/WithProvider";
+import { WithAlert, WithUser } from "../Hoc/WithProvider";
 
 const SignUpApi = (values, bag) => {
   axios
@@ -141,3 +141,5 @@ const myHoc = withFormik({
 const easySignUp = myHoc(SignUp);
 
 export default WithAlert(WithUser(easySignUp));
+
+// const arr = [2, 4, 5, 7, 12, 23, 45, 65, 32, 9, 10, 24, 25, 89]
