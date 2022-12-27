@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AlertContext, CartContext, userContext } from "../context/context";
+import { AlertContext, CartContext, userContext } from "../context/Context";
 const WithProvider = (provider: any) => {
   const myHoc = (IncomingComponent: any) => {
     const outgoingComponent = (props: any) => {

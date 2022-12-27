@@ -6,9 +6,15 @@ import { getProductId } from "./api";
 import Loading from "./Loading";
 import NotFound from "./NotFound";
 import { ProductProps } from "./module/Madule";
+import { FC } from "react";
+import { WithCart } from "./hoc/WithProvider";
 
 //import { WithCart } from "./Hoc/WithProvider";
-function ProductDetail({}) {
+
+type detailProps = {
+  addToCart: Function;
+};
+const ProductDetail: FC<detailProps> = ({ addToCart }) => {
   const [product, setProduct] = useState<ProductProps>();
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
@@ -28,6 +34,11 @@ function ProductDetail({}) {
     },
     [id]
   );
+
+  function handleButtonClick() {
+    addToCart(id, count);
+    setCount(1);
+  }
 
   function HandleCountChange(event: ChangeEvent<HTMLInputElement>) {
     setCount(+event.target.value);
@@ -81,7 +92,7 @@ function ProductDetail({}) {
               </div>
               <div className=" ">
                 <button
-                  //onClick={handleButtonClick}
+                  onClick={handleButtonClick}
                   className="rounded-md bg-red-600 p-3 text-white "
                 >
                   ADD TO CART
@@ -114,5 +125,5 @@ function ProductDetail({}) {
       </div>
     </div>
   );
-}
-export default ProductDetail;
+};
+export default WithCart(ProductDetail);

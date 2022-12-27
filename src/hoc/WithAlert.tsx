@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import { AlertContext } from "../context/context";
+import { AlertContext } from "../context/Context";
 
-const WithAlert = (IncomingComponent) => {
-  const outgoingComponent = (props) => {
-    const contexData = useContext(AlertContext);
+const WithAlert = (IncomingComponent: any) => {
+  const outgoingComponent = (props: any) => {
+    const contexData: any = useContext(AlertContext);
     return <IncomingComponent {...props} {...contexData} />;
   };
 

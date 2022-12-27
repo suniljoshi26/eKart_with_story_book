@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { WithCart } from "../Hoc/WithProvider.js";
 import { FC } from "react";
 import CartRow from "./CartRow.js";
 import Input from "../Login/Input.js";
 import Button from "../Button.js";
+import { WithCart } from "../hoc/WithProvider";
 type cartArray = {
   cart: any[];
   updateCart: Function;

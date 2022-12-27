@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { getProductByIds, getProductId } from "../api";
-import { WithCart } from "../Hoc/WithProvider";
+// import { WithCart } from "../Hoc/WithProvider";
 
 import Loading from "../Loading";
 import CartListPage from "./CartListPage";
 
-const CartPage = ({ cart, updateCart }) => {
+const CartPage = () => {
   // const [products, setProducts] = useState([]);
   // const [loading, setloading] = useState(true);
 

@@ -126,7 +126,7 @@ const SignUp: FC<Signupprops> = ({
           </div>
 
           <div>
-            <button type="Submit">Sign Up</button>
+            <Button>Sign Up</Button>
           </div>
           <div className="flex justify-end items-center gap-2 mt-4 md:mt-0">
             <span>Already account?</span>

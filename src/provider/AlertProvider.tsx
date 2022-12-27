@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { AlertContext } from "../context/context";
+import { AlertContext } from "../context/Context";
 
-export const AlertProvider = ({ children }) => {
+export const AlertProvider = ({ children }: any) => {
   const [alert, setAlert] = useState();
   // alert remove code
   const removeAlert = () => {

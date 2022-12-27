@@ -1,8 +1,8 @@
 import { useField } from "formik";
 import React from "react";
 
-const FormikHoc = (IncomingComponent) => {
-  const outgoingComponent = ({ name, ...rest }) => {
+const FormikHoc = (IncomingComponent: any) => {
+  const outgoingComponent = ({ name, ...rest }: any) => {
     const [data, mata] = useField(name);
     const { value, onBlur, onChange } = data;
     const { touched, error } = mata;

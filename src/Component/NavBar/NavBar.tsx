@@ -1,11 +1,14 @@
 import { useState, FC } from "react";
 import { BsMinecartLoaded } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { WithCart } from "../../Hoc/WithProvider";
-import WithUser from "../../Hoc/WithUser";
-type NavProps = {};
+import { WithCart } from "../../hoc/WithProvider";
 
-const NavBar: FC<NavProps> = () => {
+import WithUser from "../../Hoc/WithUser";
+type NavProps = {
+  cartCount: any;
+};
+
+const NavBar: FC<NavProps> = ({ cartCount }) => {
   const [navbar, setNavbar] = useState(false);
 
   return (
@@ -70,7 +73,7 @@ const NavBar: FC<NavProps> = () => {
                 <div className="flex flex-col items-center justify-center">
                   <BsMinecartLoaded className="pb-1 text-4xl text-primary-default hover:text-primary-dark" />
                   <span className="-m-8 text-primary-default hover:text-primary-dark">
-                    {6}
+                    {cartCount}
                   </span>
                 </div>
               </Link>

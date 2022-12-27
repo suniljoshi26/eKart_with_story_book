@@ -1,10 +1,26 @@
-import React from "react";
+import { FC, ChangeEvent } from "react";
 import { ImCross } from "react-icons/im";
-
-function CartRow({ product, quantity, onQuantityChange, onRemove }) {
+type cartarowProps = {
+  product: {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    thumbnail: string;
+  };
+  quantity: number;
+  onQuantityChange: Function;
+  onRemove: Function;
+};
+const CartRow: FC<cartarowProps> = ({
+  product,
+  quantity,
+  onQuantityChange,
+  onRemove,
+}) => {
   console.log("product title ", product.title);
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onQuantityChange(product.id, +event.target.value);
   };
   const handleCrossClick = () => {
@@ -69,5 +85,5 @@ function CartRow({ product, quantity, onQuantityChange, onRemove }) {
       </div>
     </div>
   );
-}
+};
 export default CartRow;

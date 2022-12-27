@@ -55,8 +55,8 @@ function App() {
                     </AuthRoute>
                   }
                 ></Route>
-                {/* <Route path="/forgetpass/" element={<ForgetPass />}></Route>
-                <Route path="/cart" element={<CartPage />}></Route> */}
+                {/* <Route path="/forgetpass/" element={<ForgetPass />}></Route>*/}
+                <Route path="/cart" element={<CartPage />}></Route>
               </Routes>
             </div>
             <Footer />

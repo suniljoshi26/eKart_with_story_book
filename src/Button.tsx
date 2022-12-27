@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, FC, memo } from "react";
 
 type ButtonProps = {
+  type?: String;
   children: String;
   them?: "highlight" | "secondary" | "primary";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
