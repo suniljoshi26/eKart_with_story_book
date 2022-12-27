@@ -1,14 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { withFormik } from "formik";
 
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import * as Yup from "yup";
-import Input from "../Input";
+import Input from "./Input";
 import axios from "axios";
 import { WithAlert, WithUser } from "../Hoc/WithProvider";
 
-const SignUpApi = (values, bag) => {
+const SignUpApi = (values: any, bag: any) => {
   axios
     .post("https://myeasykart.codeyogi.io/signup", {
       fullName: values.FullName,
@@ -38,13 +38,20 @@ const schema = Yup.object().shape({
   password: Yup.string().min(6).max(16).required(),
 });
 
-const initialValues = {
+const initialValues: any = {
   FullName: "",
   email: "",
   password: "",
 };
-
-const SignUp = ({
+type Signupprops = {
+  handleSubmit: any;
+  values: any;
+  errors: any;
+  touched: any;
+  handleBlur: any;
+  handleChange: any;
+};
+const SignUp: FC<Signupprops> = ({
   handleSubmit,
   values,
   errors,
@@ -85,7 +92,7 @@ const SignUp = ({
               value={values.FullName}
               name="FullName"
               autoComplete="full name"
-              required="required"
+              required
               placeholder="Full_Name"
             />
             <Input
@@ -97,7 +104,7 @@ const SignUp = ({
               type="email"
               name="email"
               autoComplete="email"
-              required="required"
+              required
               placeholder="Email address"
               touched={touched.email}
               error={errors.email}
@@ -111,7 +118,7 @@ const SignUp = ({
               type="password"
               name="password"
               autoComplete=" current-password"
-              required="required"
+              required
               placeholder="Passward"
               touched={touched.password}
               error={errors.password}
@@ -119,7 +126,7 @@ const SignUp = ({
           </div>
 
           <div>
-            <Button type="Submit">Sign Up</Button>
+            <button type="Submit">Sign Up</button>
           </div>
           <div className="flex justify-end items-center gap-2 mt-4 md:mt-0">
             <span>Already account?</span>
@@ -133,8 +140,11 @@ const SignUp = ({
   );
 };
 const myHoc = withFormik({
+  mapPropsToValues: () => {
+    return initialValues;
+  },
   validationSchema: schema,
-  initialValues: initialValues,
+
   handleSubmit: SignUpApi,
 });
 

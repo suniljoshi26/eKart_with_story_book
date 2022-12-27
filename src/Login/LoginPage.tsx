@@ -1,13 +1,15 @@
 import { withFormik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+
 import * as Yup from "yup";
-import Input from "./Input";
+
 import axios from "axios";
 import { WithAlert, WithUser } from "../Hoc/WithProvider";
+import Input from "./Input";
+import Button from "../Button";
 
-const LoginApiCall = (values, bag) => {
+const LoginApiCall = (values: any, bag: any) => {
   axios
     .post("https://myeasykart.codeyogi.io/login", {
       email: values.email,
@@ -21,7 +23,7 @@ const LoginApiCall = (values, bag) => {
     })
     .catch(() => {
       bag.props.setAlert({ type: "error", massage: "invalid credentials" });
-    }, []);
+    });
 };
 
 const schema = Yup.object().shape({
@@ -47,8 +49,17 @@ const initialValues = {
   email: "",
   password: "",
 };
+type LoginProps = {
+  handleSubmit: any;
+  values: { email: string; password: string };
+  errors: { email: string; password: string };
+  touched: any;
+  handleChange: any;
+  handleBlur: any;
+  isLoggedIn: boolean;
+};
 
-export const LoginPage = ({
+export const LoginPage: React.FC<LoginProps> = ({
   errors,
   touched,
   values,
@@ -80,7 +91,7 @@ export const LoginPage = ({
             type="email"
             name="email"
             autoComplete="email"
-            required="required"
+            required
             placeholder="Email address"
             touched={touched.email}
             error={errors.email}
@@ -95,7 +106,7 @@ export const LoginPage = ({
             type="password"
             name="password"
             autoComplete=" current-password"
-            required="required"
+            required
             placeholder="Passward"
             touched={touched.password}
             error={errors.password}
@@ -128,7 +139,9 @@ export const LoginPage = ({
 
 const FormikLogin = withFormik({
   validationSchema: schema,
-  initialValues: initialValues,
+  mapPropsToValues: () => {
+    return initialValues;
+  },
   handleSubmit: LoginApiCall,
 })(LoginPage);
 
