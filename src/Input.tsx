@@ -1,6 +1,23 @@
-import React from "react";
+import React, { FC, ReactNode } from "react";
 import FormikHoc from "./FormikHoc";
-const Input = ({ id, label, name, touched, className, error, ...rest }) => {
+type inputProps = {
+  id: string;
+  label: string;
+  name: string;
+  touched: { email: boolean; password: boolean };
+  className: string;
+  error: ReactNode;
+};
+
+const Input: FC<inputProps> = ({
+  id,
+  label,
+  name,
+  touched,
+  className,
+  error,
+  ...rest
+}) => {
   let borderClass = "border-gray-300 focus-indigo-500";
   if (touched && error) {
     borderClass = "border-red-500";

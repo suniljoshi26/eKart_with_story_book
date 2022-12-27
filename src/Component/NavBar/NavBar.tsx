@@ -1,4 +1,8 @@
 import { useState, FC } from "react";
+import { BsMinecartLoaded } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { WithCart } from "../../Hoc/WithProvider";
+import WithUser from "../../Hoc/WithUser";
 type NavProps = {};
 
 const NavBar: FC<NavProps> = () => {
@@ -62,6 +66,14 @@ const NavBar: FC<NavProps> = () => {
               <li className=" px-4 py-2 sm:bg-red-600 rounded-md  hover:text-blue-600">
                 <a href="javascript:void(0)">Login</a>
               </li>
+              <Link to="/cart">
+                <div className="flex flex-col items-center justify-center">
+                  <BsMinecartLoaded className="pb-1 text-4xl text-primary-default hover:text-primary-dark" />
+                  <span className="-m-8 text-primary-default hover:text-primary-dark">
+                    {6}
+                  </span>
+                </div>
+              </Link>
 
               {/* <li className="text-gray-600 hover:text-blue-600">
                 <a href="javascript:void(0)">About US</a>
@@ -76,4 +88,4 @@ const NavBar: FC<NavProps> = () => {
     </nav>
   );
 };
-export default NavBar;
+export default WithUser(WithCart(NavBar));
